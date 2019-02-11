@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GmilAppCode", "GmilAppCode\GmilAppCode.csproj", "{8E75A6A4-38F3-4357-B4F3-726A9E37A872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GmailAppTest", "UnitTestProject1\GmailAppTest.csproj", "{5C0348C1-9DA8-4980-92D7-991BAAF4FB3F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E75A6A4-38F3-4357-B4F3-726A9E37A872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E75A6A4-38F3-4357-B4F3-726A9E37A872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E75A6A4-38F3-4357-B4F3-726A9E37A872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E75A6A4-38F3-4357-B4F3-726A9E37A872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C0348C1-9DA8-4980-92D7-991BAAF4FB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0348C1-9DA8-4980-92D7-991BAAF4FB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0348C1-9DA8-4980-92D7-991BAAF4FB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C0348C1-9DA8-4980-92D7-991BAAF4FB3F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C934CA28-0A08-4DC5-A0AB-4E11A08BCF6A}
+	EndGlobalSection
+EndGlobal
