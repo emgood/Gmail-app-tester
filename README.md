@@ -15,3 +15,4 @@ Automation project for testing Gmail-app functionalities, using Selenium C#.
  
 5. Make sure it gets to the sent items.
 
+6. Logout.
