@@ -1,7 +1,7 @@
 # ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) Project: Gmail-app-tester
 
 # ![#c5f015](https://placehold.it/15/c5f015/000000?text=+) Description:
-Automation project for testing Gmail-app functionality, using Selenium C#.
+Automation project for testing Gmail-app functionalities, using Selenium C#.
 
 
 # ![#c5f015](https://placehold.it/15/c5f015/000000?text=+) Requirements: 
