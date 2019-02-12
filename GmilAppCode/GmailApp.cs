@@ -19,10 +19,14 @@ namespace GmailAppCode
         {
             instance.Navigate().GoToUrl("http://www.google.co.il");
             var userNameField = instance.FindElement(By.CssSelector("input[name=\"q\"]"));
-            userNameField.SendKeys("hello");
+            userNameField.SendKeys("gmail sign in");
             userNameField.SendKeys(Keys.Enter);
-            
+
+            var gmailLoginPage = Driver.instance.FindElement(By.CssSelector("a[href=\"https://accounts.google.com/ServiceLogin\"]"));
+            gmailLoginPage.Click();
         }
+
+
 
         static public void Close()
         {
@@ -52,8 +56,13 @@ namespace GmailAppCode
 
         public static void GoTo()
         {
-            Driver.instance.Navigate().GoToUrl("http://www.gmail.com");
+            Driver.instance.Navigate().GoToUrl("http://www.google.co.il");
+            var userNameField = Driver.instance.FindElement(By.CssSelector("input[name=\"q\"]"));
+            userNameField.SendKeys("gmail sign in");
+            userNameField.SendKeys(Keys.Enter);
 
+            var gmailLoginPage = Driver.instance.FindElement(By.CssSelector("a[href=\"https://accounts.google.com/ServiceLogin\"]"));
+            gmailLoginPage.Click();
 
         }
 
