@@ -10,8 +10,7 @@ namespace GmailAppCode
 
         static public void Init()
         {
-  //          var chromeOptions = new ChromeOptions();
-    //        chromeOptions.AddArguments("headless");
+       
             instance = new ChromeDriver();
             instance.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
