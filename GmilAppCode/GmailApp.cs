@@ -10,23 +10,9 @@ namespace GmailAppCode
 
         static public void Init()
         {
-       
             instance = new ChromeDriver();
             instance.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
-
-        public static void GoTo()
-        {
-            instance.Navigate().GoToUrl("http://www.google.co.il");
-            var userNameField = instance.FindElement(By.CssSelector("input[name=\"q\"]"));
-            userNameField.SendKeys("gmail sign in");
-            userNameField.SendKeys(Keys.Enter);
-
-            var gmailLoginPage = Driver.instance.FindElement(By.XPath("//span[@dir='ltr']"));
-            gmailLoginPage.Click();
-        }
-
-
 
         static public void Close()
         {
@@ -50,20 +36,12 @@ namespace GmailAppCode
     static public class LoginPage
     {
         //defult value
-        static private string userName = "ozozozozozoz945";
-
-        static private string password = "ct,h kvmkhj1234";
+        static private string userName = "apptesterselenuim";
+        static private string password = "ct,h kvmkhj";
 
         public static void GoTo()
         {
-            Driver.instance.Navigate().GoToUrl("http://www.google.co.il");
-            var userNameField = Driver.instance.FindElement(By.CssSelector("input[name=\"q\"]"));
-            userNameField.SendKeys("gmail sign in");
-            userNameField.SendKeys(Keys.Enter);
-
-            var gmailLoginPage = Driver.instance.FindElement(By.CssSelector("a[href=\"https://accounts.google.com/ServiceLogin\"]"));
-            gmailLoginPage.Click();
-
+            Driver.instance.Navigate().GoToUrl("http://www.gmail.com");
         }
 
         public static void LogAs()
@@ -112,7 +90,7 @@ namespace GmailAppCode
         static public class NewPost
         {
             //defult value
-            static private string mailTo = "ozozozozozoz945@gmail.com";
+            static private string mailTo = "apptesterselenuim@gmail.com";
 
             static private string msgBody = "Hello ZoomD";
 
@@ -172,7 +150,7 @@ namespace GmailAppCode
             }
 
             //until here done -
-             //C. code in github D. Azure pipeline
+            //C. code in github D. Azure pipeline
 
             private static void ValidateSentPost()
             {
