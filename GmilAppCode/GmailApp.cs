@@ -22,7 +22,7 @@ namespace GmailAppCode
             userNameField.SendKeys("gmail sign in");
             userNameField.SendKeys(Keys.Enter);
 
-            var gmailLoginPage = Driver.instance.FindElement(By.CssSelector("a[href=\"https://accounts.google.com/ServiceLogin\"]"));
+            var gmailLoginPage = Driver.instance.FindElement(By.XPath("//span[@dir='ltr']"));
             gmailLoginPage.Click();
         }
 
