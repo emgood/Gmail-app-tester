@@ -43,7 +43,10 @@ namespace GmailAppCode
 
         public static void GoTo()
         {
+            Driver.instance.Navigate().GoToUrl("http://www.google.co.il");
             Driver.instance.Navigate().GoToUrl("http://www.gmail.com");
+
+
         }
 
         public static void LogAs()
