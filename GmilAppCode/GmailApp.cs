@@ -15,6 +15,15 @@ namespace GmailAppCode
             instance.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
 
+        public static void GoTo()
+        {
+            instance.Navigate().GoToUrl("http://www.google.co.il");
+            var userNameField = instance.FindElement(By.CssSelector("input[name=\"q\"]"));
+            userNameField.SendKeys("hello");
+            userNameField.SendKeys(Keys.Enter);
+            
+        }
+
         static public void Close()
         {
             instance.Close();
@@ -43,7 +52,6 @@ namespace GmailAppCode
 
         public static void GoTo()
         {
-            Driver.instance.Navigate().GoToUrl("http://www.google.co.il");
             Driver.instance.Navigate().GoToUrl("http://www.gmail.com");
 
 

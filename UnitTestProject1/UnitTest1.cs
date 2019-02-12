@@ -12,6 +12,13 @@ namespace UnitTestProject1
             Driver.Init();
         }
 
+        [TestMethod]
+        public void TEST()
+        {
+            Driver.GoTo();
+        }
+
+
         //Note: possibility to pass username and password strings parameters,  into logAs and WithPassword methods, in respectively.
         [TestMethod]
         public void CanLoginIntoGmail()
