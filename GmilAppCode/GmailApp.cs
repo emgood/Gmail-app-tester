@@ -93,7 +93,7 @@ namespace GmailAppCode
             //defult value
             static private string mailTo = "apptesterselenuim@gmail.com";
 
-            static private string msgBody = "Hello ZoomD";
+            static private string msgBody = "Hello World";
 
             static private TimeSpan subjectTime;
             static public bool sentPost { get; internal set; }
