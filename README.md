@@ -20,12 +20,12 @@ Automation project for testing Gmail-app functionalities, using Selenium C#.
 
 # ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) miscellaneous:
 Defult user account at Gmail:
-  user name: "apptesterselenuim"
-  password:  "ct,h kvmkhj"
+  - user name: "apptesterselenuim"
+  - password:  "ct,h kvmkhj"
   
-  relevant files:
-  - code: Gmail-app-tester/GmilAppCode/GmailApp.cs
-  - test: Gmail-app-tester/UnitTestProject1/UnitTest1.cs
+relevant files:
+  - code: GmilAppCode/GmailApp.cs
+  - test: UnitTestProject1/UnitTest1.cs
   
 overloading methods:
 - LoginPage.LogAs();
