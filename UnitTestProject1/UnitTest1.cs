@@ -13,7 +13,7 @@ namespace UnitTestProject1
         }
 
  
-        //Note: possibility to pass username and password strings parameters,  into logAs and WithPassword methods, in respectively.
+        //overloading: possibility of passing username and password as parameters to logAs and WithPassword methods, in respectively.
         [TestMethod]
         public void CanLoginIntoGmail()
         {
@@ -26,7 +26,7 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        //Note:possibility to pass email address, and message body string parameters into Create.
+        //Note:possibility to pass email address, and message body as parameters to Create method.
         public void CanCreateNewPost()
         {
             MenuBar.NewPost.Create();
