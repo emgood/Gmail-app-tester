@@ -62,6 +62,7 @@ namespace GmailAppCode
 
         public static void Login()
         {
+        //login page 
             //entering user name
             var userNameField = Driver.instance.FindElement(By.Id("identifierId"));
             userNameField.SendKeys(userName);
@@ -77,7 +78,7 @@ namespace GmailAppCode
             IJavaScriptExecutor ex = (IJavaScriptExecutor)Driver.instance;
             ex.ExecuteScript("arguments[0].click();", loginButttonPassword);
 
-            //valdiate
+            //validate login
             By menuBarElement = By.CssSelector(".gb_zc");
             MenuBar.Exsist = Driver.IsElementExsist(menuBarElement);
         }
@@ -108,7 +109,7 @@ namespace GmailAppCode
                 var newPostButton = Driver.instance.FindElement(By.ClassName("z0"));
                 newPostButton.Click();
 
-                //post data
+                //fill post data
                 FilleMailAddress(mailTo);
                 FillSubjectAddressWithCurrentDate();
                 FillMessageBody(msgbody);
@@ -149,13 +150,10 @@ namespace GmailAppCode
                 messageTextBox.SendKeys(Keys.Tab);
             }
 
-            //until here done -
-            //C. code in github D. Azure pipeline
-
             private static void ValidateSentPost()
             {
-                //case: try to access directly by view message popup link,
-                //      else - searching on sent item (assumption: first sent post).
+                //case: first try to access directly by view message popup link,
+                //  if it doesn't exsist, searching on sent item (assumption: first sent post item).
 
                 By viewMessageLinkElement = By.Id("link_vsm");
                 if (Driver.IsElementExsist(viewMessageLinkElement))
