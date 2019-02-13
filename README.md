@@ -26,16 +26,18 @@ Defult user account at Gmail:
 relevant files:
   - code: GmilAppCode/GmailApp.cs
   - test: UnitTestProject1/UnitTest1.cs
-  
+
+
 overloading methods:
- It is possible to change test methods, in order to achieve more flexible test:
+- It is possible to change test methods, in order to achieve more flexible test:
 
 1.user account: 
 - LoginPage.LogAs();
-  LoginPage.LogAs("username");
+- LoginPage.LogAs("username");
+
 - LoginPage.WithPassword();
-  LoginPage.WithPassword("password");
+-  LoginPage.WithPassword("password");
 
 2. post:
 - MenuBar.NewPost.Create();
-  MenuBar.NewPost.Create("mailTo", "message body");
+-  MenuBar.NewPost.Create("mailTo", "message body");
