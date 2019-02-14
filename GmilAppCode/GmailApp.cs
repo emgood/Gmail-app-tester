@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using GmilAppCode;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 
@@ -36,12 +37,13 @@ namespace GmailAppCode
     static public class LoginPage
     {
         //defult value
-        static private string userName = "apptesterselenuim";
-        static private string password = "ct,h kvmkhj";
+        static private string userName = Constants.DEFULT_USER_NAME_ACCOUNT_VALUE;
+
+        static private string password = Constants.DEFULT_PASSWORD_ACCOUNT_VALUE;
 
         public static void GoTo()
         {
-            Driver.instance.Navigate().GoToUrl("http://www.gmail.com");
+            Driver.instance.Navigate().GoToUrl(Constants.GMAIL_URL);
         }
 
         public static void LogAs()
@@ -62,24 +64,24 @@ namespace GmailAppCode
 
         public static void Login()
         {
-        //login page 
+            //login page
             //entering user name
-            var userNameField = Driver.instance.FindElement(By.Id("identifierId"));
+            var userNameField = Driver.instance.FindElement(By.Id(Constants.LOGIN_ID));
             userNameField.SendKeys(userName);
 
-            var next = Driver.instance.FindElement(By.Id("identifierNext"));
+            var next = Driver.instance.FindElement(By.Id(Constants.LOGIN_NEXT));
             next.Click();
 
             //entering password
-            var passwordField = Driver.instance.FindElement(By.Name("password"));
+            var passwordField = Driver.instance.FindElement(By.Name(Constants.PASSWORD));
             passwordField.SendKeys(password);
 
-            var loginButttonPassword = Driver.instance.FindElement(By.Id("passwordNext"));
+            var loginButttonPassword = Driver.instance.FindElement(By.Id(Constants.PASSWORD_NEXT));
             IJavaScriptExecutor ex = (IJavaScriptExecutor)Driver.instance;
             ex.ExecuteScript("arguments[0].click();", loginButttonPassword);
 
             //validate login
-            By menuBarElement = By.CssSelector(".gb_zc");
+            By menuBarElement = By.CssSelector(Constants.MENU_BUTTON);
             MenuBar.Exsist = Driver.IsElementExsist(menuBarElement);
         }
     }
@@ -91,9 +93,9 @@ namespace GmailAppCode
         static public class NewPost
         {
             //defult value
-            static private string mailTo = "apptesterselenuim@gmail.com";
+            static private string mailTo = Constants.DEFULT_MAILTO_VALUE;
 
-            static private string msgBody = "Hello World";
+            static private string msgBody = Constants.DEFULT_MSGBODY_VALUE;
 
             static private TimeSpan subjectTime;
             static public bool sentPost { get; internal set; }
@@ -106,7 +108,7 @@ namespace GmailAppCode
             public static void Create(string mailTo, string msgbody)
             {
                 //Create a new post
-                var newPostButton = Driver.instance.FindElement(By.ClassName("z0"));
+                var newPostButton = Driver.instance.FindElement(By.ClassName(Constants.NEW_POST_BUTTON));
                 newPostButton.Click();
 
                 //fill post data
@@ -124,7 +126,7 @@ namespace GmailAppCode
 
             private static void FilleMailAddress(string mailTo)
             {
-                var postForm = Driver.instance.FindElement(By.CssSelector("textarea[name=\"to\""));
+                var postForm = Driver.instance.FindElement(By.CssSelector(Constants.NEW_POST_MAILTO));
                 IJavaScriptExecutor ex = (IJavaScriptExecutor)Driver.instance;
                 ex.ExecuteScript("arguments[0].click();", postForm);
                 var to = Driver.instance.SwitchTo().ActiveElement();
@@ -134,7 +136,7 @@ namespace GmailAppCode
 
             private static void FillSubjectAddressWithCurrentDate()
             {
-                var subjectBox = Driver.instance.FindElement(By.CssSelector("input[name=\"subjectbox\"]"));
+                var subjectBox = Driver.instance.FindElement(By.CssSelector(Constants.NEW_POST_SUBJECT));
                 IJavaScriptExecutor ex = (IJavaScriptExecutor)Driver.instance;
                 ex.ExecuteScript("arguments[0].click();", subjectBox);
                 subjectBox.Click();
@@ -144,7 +146,7 @@ namespace GmailAppCode
 
             private static void FillMessageBody(string msgBody)
             {
-                var messageTextBox = Driver.instance.FindElement(By.CssSelector("div[role=\"textbox\"]"));
+                var messageTextBox = Driver.instance.FindElement(By.CssSelector(Constants.NEW_POST_BODY));
                 messageTextBox.Click();
                 messageTextBox.SendKeys(msgBody);
                 messageTextBox.SendKeys(Keys.Tab);
@@ -155,10 +157,10 @@ namespace GmailAppCode
                 //case: first try to access directly by view message popup link,
                 //  if it doesn't exsist, searching on sent item (assumption: first sent post item).
 
-                By viewMessageLinkElement = By.Id("link_vsm");
+                By viewMessageLinkElement = By.Id(Constants.NEW_POST_SENT_LINK);
                 if (Driver.IsElementExsist(viewMessageLinkElement))
                 {
-                    var viewMessage = Driver.instance.FindElement(By.Id("link_vsm"));
+                    var viewMessage = Driver.instance.FindElement(By.Id(Constants.NEW_POST_SENT_LINK));
                     viewMessage.Click();
                     sentPost = true;
                 }
@@ -173,16 +175,16 @@ namespace GmailAppCode
         {
             internal static bool IsFirstSentPostSubjectContain(TimeSpan subjectTime)
             {
-                var menuBar = Driver.instance.FindElement(By.CssSelector(".gb_zc"));
+                var menuBar = Driver.instance.FindElement(By.CssSelector(Constants.MENU_BUTTON));
                 menuBar.Click();
 
-                var sentItem = Driver.instance.FindElement(By.CssSelector("div[data-tooltip=\"Sent\"]"));
+                var sentItem = Driver.instance.FindElement(By.CssSelector(Constants.SENT_ITEMS));
                 sentItem.Click();
 
-                var firstSentPost = Driver.instance.FindElement(By.CssSelector("td[tabindex=\"-1\"]"));
+                var firstSentPost = Driver.instance.FindElement(By.CssSelector(Constants.FIRST_SENT_MAIL));
                 firstSentPost.Click();
 
-                IWebElement BodySrcCode = Driver.instance.FindElement(By.TagName("body"));
+                IWebElement BodySrcCode = Driver.instance.FindElement(By.TagName(Constants.BODY));
                 return BodySrcCode.Text.Contains(subjectTime.ToString()) ? true : false;
             }
         }
@@ -192,13 +194,11 @@ namespace GmailAppCode
             public static void Submit()
             {
                 //getting the Signout option button, using partial href link (end with: '/SignOutOptions?')
-                string PartialLinkHref = "https://accounts.google.com/SignOutOptions?";
-                var signOutOption = Driver.instance.FindElement(By.XPath("//a[contains(@href,'" + PartialLinkHref + "')]"));
+                var signOutOption = Driver.instance.FindElement(By.XPath(Constants.SIGN_OUT_OPTIONS_XP));
                 signOutOption.Click();
 
                 //logout button
-                string logout = "https://accounts.google.com/Logout?";
-                var logoutButton = Driver.instance.FindElement(By.XPath("//a[contains(@href,'" + logout + "')]"));
+                var logoutButton = Driver.instance.FindElement(By.XPath(Constants.LOGOUT_XP));
                 logoutButton.Click();
 
                 // case: some gmail account pop up an alert message, while try to logout.
